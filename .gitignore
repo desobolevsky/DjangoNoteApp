@@ -1,0 +1,14 @@
+# Python stuff
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django files
+*.log
+*.sqlite3
+
+# Virtual environment files
+venv/
+
+# PyCharm stuff
+.idea/
