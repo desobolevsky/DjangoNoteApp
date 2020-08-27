@@ -15,15 +15,18 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Logged in as {{ user.username }}</a>
+                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Log out</a>
+                        <a class="nav-link" href="{% url 'logout-page' %}">Log out</a>
                     </li>
                 {% else %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'register-page' %}">Sign up</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Sign in</a>
+                        <a class="nav-link" href="{% url 'login-page' %}">Sign in</a>
                     </li>
                 {% endif %}
             </ul>
