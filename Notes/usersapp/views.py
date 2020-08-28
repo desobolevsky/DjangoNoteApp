@@ -10,5 +10,5 @@ def register_page(request):
             return redirect('home-page')
     else:
         reg_form = UserRegistrationForm()
-        context = {'reg_form': reg_form}
+    context = {'reg_form': reg_form}
     return render(request, 'usersapp/register.html', context=context)
