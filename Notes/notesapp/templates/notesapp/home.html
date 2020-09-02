@@ -11,6 +11,7 @@
             <div>
                 <h3>{{ note.title }}</h3>
                 <p>{{ note.text }}</p>
+                <a href="{% url 'update-note-page' note.pk %}" class="btn btn-outline-success">Open</a>
             </div>
         {% endfor %}
     {% else %}
