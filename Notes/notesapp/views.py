@@ -1,18 +1,24 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Note
 
 
 # Create your views here.
-def home_page(request):
-    if request.user.is_authenticated:
-        notes = request.user.note_set.all()
-        context = {'notes': notes}
-    else:
-        context = None
-    return render(request, 'notesapp/home.html', context=context)
+class NoteListView(ListView):
+    model = Note
+    ordering = ['-date_updated']
+
+    # make users see only their notes
+    def get_queryset(self):
+        queryset = super(NoteListView, self).get_queryset()
+        if self.request.user.is_authenticated:
+            queryset = queryset.filter(author=self.request.user)
+        else:
+            return None
+        return queryset
 
 
 class CreateNoteView(LoginRequiredMixin, CreateView):
