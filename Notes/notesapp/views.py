@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Note
 
@@ -39,5 +39,17 @@ class UpdateNoteView(LoginRequiredMixin, UpdateView):
     # restrict users see each other notes
     def get_queryset(self):
         queryset = super(UpdateNoteView, self).get_queryset()
+        queryset = queryset.filter(author=self.request.user)
+        return queryset
+
+
+class DeleteNoteView(DeleteView, LoginRequiredMixin):
+    model = Note
+
+    success_url = reverse_lazy('home-page')
+
+    # restrict users delete each other notes
+    def get_queryset(self):
+        queryset = super(DeleteNoteView, self).get_queryset()
         queryset = queryset.filter(author=self.request.user)
         return queryset

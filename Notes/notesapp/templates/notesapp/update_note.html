@@ -5,4 +5,5 @@
         {{ form.as_p }}
         <input type="submit" class="btn btn-outline-success" value="Update">
     </form>
+    <a href="{% url 'delete-note-page' object.pk %}" class="btn btn-outline-danger">Delete</a>
 {% endblock %}
