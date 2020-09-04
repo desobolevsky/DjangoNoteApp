@@ -7,13 +7,21 @@
     {% if notes is None %}
         <p>You're not logged in</p>
     {% elif notes %}
-        {% for note in notes %}
-            <div>
-                <h3>{{ note.title }}</h3>
-                <p>{{ note.text }}</p>
-                <a href="{% url 'update-note-page' note.pk %}" class="btn btn-outline-success">Open</a>
-            </div>
-        {% endfor %}
+        <div class="row">
+            {% for note in notes %}
+                <div class="col-auto">
+                    <div class="card border-success my-3" style="width: 20rem">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ note.title }}</h3>
+                            <p class="card-subtitle mb-2 text-muted">Last Updated:
+                                <b>{{ note.date_updated|date:"F d, h:m" }}</b></p>
+                            <p class="text-truncate">{{ note.text }}</p>
+                            <a href="{% url 'update-note-page' note.pk %}" class="btn btn-success">Open</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
         <p>You have not got any notes.</p>
     {% endif %}

@@ -1,8 +1,9 @@
 {% extends 'notesapp/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <input type="submit" class="btn btn-outline-success" value="Update">
     </form>
     <a href="{% url 'delete-note-page' object.pk %}" class="btn btn-outline-danger">Delete</a>
