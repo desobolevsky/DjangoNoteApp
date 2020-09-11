@@ -49,7 +49,7 @@ class UpdateNoteView(LoginRequiredMixin, UpdateView):
         return queryset
 
 
-class DeleteNoteView(DeleteView, LoginRequiredMixin):
+class DeleteNoteView(LoginRequiredMixin, DeleteView):
     model = Note
 
     success_url = reverse_lazy('home-page')
