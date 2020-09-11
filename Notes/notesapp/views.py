@@ -54,6 +54,10 @@ class DeleteNoteView(DeleteView, LoginRequiredMixin):
 
     success_url = reverse_lazy('home-page')
 
+    # delete without confirmation (template) page
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, *kwargs)
+
     # restrict users delete each other notes
     def get_queryset(self):
         queryset = super(DeleteNoteView, self).get_queryset()

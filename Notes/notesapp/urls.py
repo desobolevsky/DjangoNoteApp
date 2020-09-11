@@ -8,6 +8,6 @@ urlpatterns = [
          name='create-note-page'),
     path('<int:pk>/', page_views.UpdateNoteView.as_view(template_name='notesapp/update_note.html'),
          name='update-note-page'),
-    path('delete/<int:pk>', page_views.DeleteNoteView.as_view(template_name='notesapp/delete_note.html'),
+    path('delete/<int:pk>', page_views.DeleteNoteView.as_view(),
          name='delete-note-page'),
 ]
