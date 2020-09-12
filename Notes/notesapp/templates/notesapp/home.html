@@ -31,7 +31,7 @@
                                 <p class="card-subtitle mb-2 text-muted">Last Updated:
                                     <b>{{ note.date_updated|date:"F d, h:m" }}</b></p>
                                 <!-- slice: (:100) is used since can't fix front-end card-text text-truncate issue-->
-                                <p class="card-text text-truncate">{{ note.text|slice:':100'|safe }}</p>
+                                <p class="card-text text-truncate">{{ note.text|slice:':100     '|safe }}</p>
                             </div>
                             <div class="card-footer">
                                 <div class="btn-wrapper text-center d-flex justify-content-between">
