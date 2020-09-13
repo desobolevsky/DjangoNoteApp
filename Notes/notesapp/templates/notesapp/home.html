@@ -29,7 +29,7 @@
                             <div class="card-body">
                                 <h3 class="card-title text-truncate">{{ note.title }}</h3>
                                 <p class="card-subtitle mb-2 text-muted">Last Updated:
-                                    <b>{{ note.date_updated|date:"F d, h:m" }}</b></p>
+                                    <b>{{ note.date_updated|date:"F d, H:i" }}</b></p>
                                 <!-- slice: (:100) is used since can't fix front-end card-text text-truncate issue-->
                                 <p class="card-text text-truncate">{{ note.text|slice:':100     '|safe }}</p>
                             </div>
